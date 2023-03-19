@@ -29,5 +29,4 @@ const ProductSchema = new mongoose.Schema(
 );
 
 //creates a model called Product if it doesn't exist
-export default mongoose.models.Product ||
-  mongoose.model("Product", ProductSchema);
+export default mongoose.models.Order || mongoose.model("Order", ProductSchema);

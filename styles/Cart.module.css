@@ -56,7 +56,16 @@
   cursor: pointer;
   margin-top: 20px;
 }
-
+.paymentbtn {
+  width: 100%;
+  margin-top: 20px;
+}
+.codbtn {
+  width: 100%;
+  height: 40px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
 @media screen and (max-width: 480px) {
   .container {
     flex-direction: column;
@@ -70,11 +79,11 @@
     justify-content: center;
   }
 
-  .trTitle{
+  .trTitle {
     display: none;
   }
 
-  .tr{
+  .tr {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -82,33 +91,36 @@
     margin-bottom: 20px;
   }
 
-  .imgContainer{
+  .imgContainer {
     width: 35vw;
     height: 35vw;
   }
 
-  .name,.total{
+  .name,
+  .total {
     font-size: 24px;
   }
 
-  .extras,.price,.quantity{
+  .extras,
+  .price,
+  .quantity {
     font-size: 22px;
   }
 
-  .price::before{
+  .price::before {
     content: "Price: ";
     font-weight: 500;
   }
-  .quantity::before{
+  .quantity::before {
     content: "Quantity: ";
     font-weight: 500;
   }
-  .total::before{
+  .total::before {
     content: "Total: ";
     font-weight: 500;
   }
 
-  .wrapper{
+  .wrapper {
     width: 100%;
   }
 }

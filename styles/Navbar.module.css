@@ -1,3 +1,15 @@
+@font-face {
+  font-family: "AcrosstheRoad";
+  src: url("../public/fonts/Franchise.ttf");
+}
+.mainheading {
+  font-family: "AcrosstheRoad";
+  font-size: 50px;
+  color: #ffffff;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
 .container {
   height: 100px;
   padding: 0px 50px;

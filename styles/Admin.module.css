@@ -1,0 +1,22 @@
+.container {
+  padding: 50px;
+}
+.table {
+  width: 100%;
+  text-align: left;
+  margin-bottom: 50px;
+}
+.btn {
+  border: none;
+  color: white;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.btn:first-child {
+  background-color: #4caf50;
+  margin-right: 5px;
+}
+.btn:last-child {
+  background-color: #f44336;
+}
