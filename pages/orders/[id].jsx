@@ -1,5 +1,6 @@
 import styles from "../../styles/Order.module.css";
 import Image from "next/image";
+import { baseurl } from "../../baseurl/baserurl";
 
 const Order = ({ order }) => {
   const status = order.status;
@@ -114,7 +115,7 @@ const Order = ({ order }) => {
 };
 
 export const getServerSideProps = async ({ params }) => {
-  const res = await fetch(`http://localhost:3000/api/orders/${params.id}`);
+  const res = await fetch(baseurl + `/orders/${params.id}`);
   return {
     props: { order: await res.json() },
   };

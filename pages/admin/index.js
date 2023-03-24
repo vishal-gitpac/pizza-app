@@ -2,6 +2,7 @@ import styles from "../../styles/Admin.module.css";
 import Image from "next/image";
 import axios from "axios";
 import { useState } from "react";
+import { baseurl } from "../../baseurl/baserurl";
 
 const Index = ({ products, orders }) => {
   const [productList, setProductList] = useState(products);
@@ -93,7 +94,7 @@ const Index = ({ products, orders }) => {
             </tr>
           </tbody>
           {orderList.map((order) => (
-            <tbody>
+            <tbody key={order._id}>
               <tr className={styles.tr}>
                 <td>{order._id.slice(0, 5)}...</td>
                 <td>{order.customer}</td>
@@ -120,9 +121,18 @@ const Index = ({ products, orders }) => {
     </div>
   );
 };
-export const getServerSideProps = async () => {
-  const productList = await axios.get("http://localhost:3000/api/products");
-  const orderList = await axios.get("http://localhost:3000/api/orders");
+export const getServerSideProps = async (ctx) => {
+  const myCookie = ctx.req?.cookies || "";
+  if (myCookie.auth !== process.env.token) {
+    return {
+      redirect: {
+        destination: "/admin/login",
+        permanent: false,
+      },
+    };
+  }
+  const productList = await axios.get(baseurl + "/products");
+  const orderList = await axios.get(baseurl + "/orders");
   return {
     props: { products: productList.data, orders: orderList.data },
   };

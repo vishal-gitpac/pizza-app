@@ -12,6 +12,7 @@ import { useRouter } from "next/router";
 import axios from "axios";
 import { reset } from "../redux/cartslice";
 import OrderDetails from "../components/OrderDetails";
+import { baseurl } from "../baseurl/baserurl";
 
 const Cart = () => {
   const currency = "USD";
@@ -25,7 +26,7 @@ const Cart = () => {
 
   const createOrder = async (data) => {
     try {
-      const res = await axios.post("http://localhost:3000/api/orders", data);
+      const res = await axios.post(baseurl + "/orders", data);
       res.status === 201 && router.push("/orders/" + res.data._id);
       dispatch(reset());
     } catch (err) {
@@ -47,7 +48,7 @@ const Cart = () => {
           currency: currency,
         },
       });
-    }, [currency, showSpinner]);
+    }, [options, dispatch, currency, showSpinner]);
 
     return (
       <>
@@ -105,7 +106,7 @@ const Cart = () => {
           </tbody>
           <tbody>
             {cart.items.map((item) => (
-              <tr className={styles.tr}>
+              <tr className={styles.tr} key={item._id}>
                 <td>
                   <div className={styles.imgContainer}>
                     <Image
@@ -121,7 +122,9 @@ const Cart = () => {
                 </td>
                 <td>
                   {item.extras.map((extra) => (
-                    <span className={styles.extras}>{extra.text}</span>
+                    <span className={styles.extras} key={item._id}>
+                      {extra.text}
+                    </span>
                   ))}
                 </td>
                 <td>
